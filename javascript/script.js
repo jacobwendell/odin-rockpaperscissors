@@ -48,3 +48,10 @@ function playRound(playerSelection, computerSelection){
     }
 
 }
+
+// Create a function called game that plays playRound 5 times
+function game(){
+    for (var i=0; i <= 4; i++){
+        console.log(playRound("rock", getComputerChoice()));
+    }
+}
