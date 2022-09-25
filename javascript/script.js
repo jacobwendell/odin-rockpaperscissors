@@ -89,14 +89,14 @@ function game(){
     playerScore = 0;
     computerScore = 0;
     for (var i=0; i <= 4; i++){
-        console.log(playRound(getPlayerChoice(), getComputerChoice()));
-        console.log(`Player Score: ${playerScore} | Computer Score: ${computerScore}`);
+        alert(playRound(getPlayerChoice(), getComputerChoice()));
+        alert(`Player Score: ${playerScore} | Computer Score: ${computerScore}`);
     }
     if (playerScore > computerScore) {
-        return `Player Wins! ${playerScore} - ${computerScore}`;
+        return alert(`Player Wins! ${playerScore} - ${computerScore}`);
     } else if (playerScore < computerScore) {
-        return `Computer Wins! ${computerScore} - ${playerScore}`;
+        return alert(`Computer Wins! ${computerScore} - ${playerScore}`);
     } else { 
-        return `Draw! ${playerScore} - ${computerScore}`;
+        return alert(`Draw! ${playerScore} - ${computerScore}`);
     }
 }
