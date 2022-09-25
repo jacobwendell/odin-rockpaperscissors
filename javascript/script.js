@@ -20,12 +20,31 @@ function playRound(playerSelection, computerSelection){
     let computer = computerSelection.toLowerCase();
     if (player === "rock") {
         if (computer === "rock") {
-            return "A Draw! Rock ties Rock."
+            return "A Draw! Rock ties Rock.";
         } else if (computer === "scissors") {
-            return "Player Wins! Rock beats Scissors."
+            return "Player Wins! Rock beats Scissors.";
         } else {
-            return "Computer Wins! Paper beats Rock."
+            return "Computer Wins! Paper beats Rock.";
         }
+    } else if (player === "scissors") {
+        if (computer === "scissors") {
+            return "A Draw! Scissors ties Scissors.";
+        } else if (computer === "paper") {
+            return "Player Wins! Scissors beats Paper";
+        } else {
+            return "Computer Wins! Rock beats Scissors.";
+        }
+    } else if (player === "paper"){
+        if (computer === "paper") {
+            return "A Draw! Paper ties Paper.";
+        } else if (computer === "rock") {
+            return "Player Wins! Paper beats Rock"; 
+        } else {
+            return "Computer Wins! Scissors beats Paper."
+        }
+    } else {
+        // Added for invalid input from user
+        return "Invalid input added from player."
     }
 
 }
