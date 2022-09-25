@@ -1,11 +1,22 @@
 // Holder of choices for the computer to pick from randomly
 const CHOICES = ["Rock", "Paper", "Scissors"];
+let playerScore = 0;
+let computerScore = 0;
 
 // Create Function that gets random computer shoice by random numbers 0 to 2
 // Random number then picks out a choice from an array
 function getComputerChoice(){
     let randomNumber = Math.floor(Math.random() * 3);
     return CHOICES[randomNumber];
+}
+
+// Player and Computer Score Counter functions to add after playRound
+function playerScoreIncrease() {
+    playerScore += 1;
+}
+
+function computerScoreIncrease() {
+    computerScore += 1;
 }
 
 // playRound function which evaluates the player's choice versus the computer random choice
@@ -22,24 +33,30 @@ function playRound(playerSelection, computerSelection){
         if (computer === "rock") {
             return "A Draw! Rock ties Rock.";
         } else if (computer === "scissors") {
+            playerScoreIncrease();
             return "Player Wins! Rock beats Scissors.";
         } else {
+            computerScoreIncrease();
             return "Computer Wins! Paper beats Rock.";
         }
     } else if (player === "scissors") {
         if (computer === "scissors") {
             return "A Draw! Scissors ties Scissors.";
         } else if (computer === "paper") {
+            playerScoreIncrease();
             return "Player Wins! Scissors beats Paper";
         } else {
+            computerScoreIncrease();
             return "Computer Wins! Rock beats Scissors.";
         }
     } else if (player === "paper"){
         if (computer === "paper") {
             return "A Draw! Paper ties Paper.";
         } else if (computer === "rock") {
+            playerScoreIncrease();
             return "Player Wins! Paper beats Rock"; 
         } else {
+            computerScoreIncrease();
             return "Computer Wins! Scissors beats Paper."
         }
     } else {
@@ -50,8 +67,17 @@ function playRound(playerSelection, computerSelection){
 }
 
 // Create a function called game that plays playRound 5 times
+// Created increasing score functions above, this function deals with the player and computer score values
 function game(){
     for (var i=0; i <= 4; i++){
         console.log(playRound("rock", getComputerChoice()));
+        console.log(`Player Score: ${playerScore} | Computer Score: ${computerScore}`);
+    }
+    if (playerScore > computerScore) {
+        return `Player Wins! ${playerScore} - ${computerScore}`;
+    } else if (playerScore < computerScore) {
+        return `Computer Wins! ${computerScore} - ${playerScore}`;
+    } else { 
+        return `Draw! ${playerScore} - ${computerScore}`;
     }
 }
