@@ -3,8 +3,7 @@ const CHOICES = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
-// Create Function that gets random computer shoice by random numbers 0 to 2
-// Random number then picks out a choice from an array
+// Create Function that gets random computer choice by random numbers 0 to 2
 function getRandomNumber() {
     let randomNumber = Math.floor(Math.random() * CHOICES.length);
     return randomNumber;
@@ -13,23 +12,6 @@ function getRandomNumber() {
 function getComputerChoice(){
     let randomNumber = getRandomNumber();
     return CHOICES[randomNumber];
-}
-
-// Get playerChoice functions to get players choice and call in playRound function
-function promptPlayer(){
-    let data = prompt("Rock Paper Scissors! Pick Rock, Paper, or Scissors to play:");
-    return data;
-}
-// Recursion if invalid value is presented will run until given a correct value
-function getPlayerChoice() {
-    let inputValue = promptPlayer();
-    let playerChoice = inputValue.toLowerCase();
-    if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors"){
-        return playerChoice;
-    } else {
-        alert("Invalid Value, Try Again.")
-        return getPlayerChoice();
-    }
 }
 
 // Player and Computer Score Counter functions to add after playRound
@@ -43,12 +25,6 @@ function computerScoreIncrease() {
 
 // playRound function which evaluates the player's choice versus the computer random choice
 function playRound(playerSelection, computerSelection){
-    // Need to take in the players choice and make it all lowercase, same with the computers
-    // Check the values against each other
-    // Rock beats Scissors and loses to paper
-    // Scissors beats paper but loses to rock
-    // Paper beats rock but loses to Scissors
-    // return the string declaring the winner with a statement saying etc beats etc
     let player = playerSelection;
     let computer = computerSelection;
     if (player === "rock") {
@@ -88,41 +64,88 @@ function playRound(playerSelection, computerSelection){
 
 }
 
-// Create a function called game that plays playRound 5 times
-// Created increasing score functions above, this function deals with the player and computer score values
-function game(){
-    playerScore = 0;
-    computerScore = 0;
-    var gameOn = true;
-    while (gameOn) {
-        alert(playRound(getPlayerChoice(), getComputerChoice()));
-        alert(`Player Score: ${playerScore} | Computer Score: ${computerScore}`);
-        if (playerScore === 5 || computerScore === 5) {
-            gameOn = false;
-        }
-    }
-    if (playerScore > computerScore) {
-        return alert(`Player Wins! ${playerScore} - ${computerScore}`);
-    } else if (playerScore < computerScore) {
-        return alert(`Computer Wins! ${computerScore} - ${playerScore}`);
-    } else { 
-        return alert(`Draw! ${playerScore} - ${computerScore}`);
-    }
-}
-
 // GUI 
+const buttonDiv = document.querySelector(".buttons");
 const buttonRock = document.querySelector("#rock");
 const buttonPaper = document.querySelector("#paper");
 const buttonScissors = document.querySelector("#scissors");
+const displayDiv = document.querySelector(".display");
+const scoreBoard = document.querySelector(".scoreboard");
+const startButton = document.querySelector("#start");
+const playAgainButton = document.querySelector('#play-again');
 
+function displayContent(content) {
+    displayDiv.textContent = "";
+    displayDiv.textContent = content;
+}
+
+function updateScoreboard() {
+    scoreBoard.textContent = `Player Score: ${playerScore} | Computer Score: ${computerScore}`;
+}
+
+function matchProtocol(data) {
+    displayContent(data);
+    updateScoreboard();
+}
+
+function playAgain() {
+    playAgainButton.classList.toggle("hidden");
+}
+
+playAgainButton.addEventListener("click", function() {
+    playerScore = 0;
+    computerScore = 0;
+    displayContent("Lets Play Rock paper Scissors");
+    updateScoreboard();
+    playAgainButton.classList.toggle("hidden");
+})
+
+function gameOver() {
+    if (playerScore === 5) {
+        displayContent("Game over! Player Wins");
+        playAgain();
+
+    } else if (computerScore === 5) {
+        displayContent("Game over! Computer Wins!")
+        playAgain();
+    }
+
+}
+
+displayContent("Lets Play Rock Paper Scissors")
+updateScoreboard();
 buttonRock.addEventListener("click", function() {
-    console.log(playRound("rock", getComputerChoice()));
+    if (playerScore === 5 || computerScore === 5) {
+        displayContent("");
+        gameOver();
+    } else {
+        var data = playRound("rock", getComputerChoice());
+        matchProtocol(data);
+    }
 })
 
-buttonPaper.addEventListener("click", function() {
-    console.log(playRound("paper", getComputerChoice()));
+buttonPaper.addEventListener("click", function(){
+    if (playerScore === 5 || computerScore === 5) {
+        displayContent("");
+        gameOver();
+    } else {
+        var data = playRound("paper", getComputerChoice());
+        matchProtocol(data);
+    }
 })
 
-buttonScissors.addEventListener("click", function() {
-    console.log(playRound("scissors", getComputerChoice()));
+buttonScissors.addEventListener('click', function(){
+    if (playerScore === 5 || computerScore === 5) {
+        displayContent("");
+        gameOver();
+    } else {
+        var data = playRound("scissors", getComputerChoice());
+        matchProtocol(data);
+    }
 })
+
+
+
+
+
+
