@@ -109,3 +109,20 @@ function game(){
         return alert(`Draw! ${playerScore} - ${computerScore}`);
     }
 }
+
+// GUI 
+const buttonRock = document.querySelector("#rock");
+const buttonPaper = document.querySelector("#paper");
+const buttonScissors = document.querySelector("#scissors");
+
+buttonRock.addEventListener("click", function() {
+    console.log(playRound("rock", getComputerChoice()));
+})
+
+buttonPaper.addEventListener("click", function() {
+    console.log(playRound("paper", getComputerChoice()));
+})
+
+buttonScissors.addEventListener("click", function() {
+    console.log(playRound("scissors", getComputerChoice()));
+})
