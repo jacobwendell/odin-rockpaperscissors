@@ -137,7 +137,7 @@ function playAgain() {
 playAgainButton.addEventListener("click", function() {
     playerScore = 0;
     computerScore = 0;
-    displayContent("Lets Play Rock paper Scissors");
+    displayContent("Lets Play Rock Paper Scissors");
     updateScoreboard();
     removeHighlightBackground();
     removePlayerBackground();
