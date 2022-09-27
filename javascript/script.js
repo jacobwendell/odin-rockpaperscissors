@@ -1,12 +1,17 @@
 // Holder of choices for the computer to pick from randomly
-const CHOICES = ["Rock", "Paper", "Scissors"];
+const CHOICES = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
 // Create Function that gets random computer shoice by random numbers 0 to 2
 // Random number then picks out a choice from an array
+function getRandomNumber() {
+    let randomNumber = Math.floor(Math.random() * CHOICES.length);
+    return randomNumber;
+}
+
 function getComputerChoice(){
-    let randomNumber = Math.floor(Math.random() * 3);
+    let randomNumber = getRandomNumber();
     return CHOICES[randomNumber];
 }
 
