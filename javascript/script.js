@@ -88,9 +88,13 @@ function playRound(playerSelection, computerSelection){
 function game(){
     playerScore = 0;
     computerScore = 0;
-    for (var i=0; i <= 4; i++){
+    var gameOn = true;
+    while (gameOn) {
         alert(playRound(getPlayerChoice(), getComputerChoice()));
         alert(`Player Score: ${playerScore} | Computer Score: ${computerScore}`);
+        if (playerScore === 5 || computerScore === 5) {
+            gameOn = false;
+        }
     }
     if (playerScore > computerScore) {
         return alert(`Player Wins! ${playerScore} - ${computerScore}`);
