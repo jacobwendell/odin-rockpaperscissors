@@ -37,3 +37,7 @@
     margin: 10px auto;
     font-size: 1.2em;
 }
+
+.highlight-background1 {
+    background-color: rgb(70, 239, 70);
+}
