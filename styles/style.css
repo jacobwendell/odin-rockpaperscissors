@@ -1,3 +1,39 @@
+.scoreboard {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.display {
+    text-align: center;
+    font-size: 1.6em;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.button2 {
+    font-size: 5em;
+}
+
+.playagain {
+    display: flex;
+}
+
 .hidden {
     display: none;
+}
+
+.hidden2 {
+    margin: 10px auto;
+    font-size: 1.2em;
 }
