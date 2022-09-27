@@ -131,7 +131,7 @@ function matchProtocol(data) {
 }
 
 function playAgain() {
-    playAgainButton.classList.toggle("hidden");
+    playAgainButton.classList.remove("hidden");
 }
 
 playAgainButton.addEventListener("click", function() {
@@ -141,7 +141,7 @@ playAgainButton.addEventListener("click", function() {
     updateScoreboard();
     removeHighlightBackground();
     removePlayerBackground();
-    playAgainButton.classList.toggle("hidden");
+    playAgainButton.classList.add("hidden");
 })
 
 function gameOver() {
