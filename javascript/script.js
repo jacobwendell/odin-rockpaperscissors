@@ -9,6 +9,8 @@ const playAgainButton = document.querySelector('#play-again');
 const computerRock = document.querySelector("#computer-rock");
 const computerPaper = document.querySelector("#computer-paper");
 const computerScissors = document.querySelector("#computer-scissors");
+const playerScoreBoard = document.querySelector(".playerscoreboard");
+const computerScoreBoard = document.querySelector(".computerscoreboard");
 
 // Holder of choices for the computer to pick from randomly
 const CHOICES = ["rock", "paper", "scissors"];
@@ -119,7 +121,8 @@ function displayContent(content) {
 }
 
 function updateScoreboard() {
-    scoreBoard.textContent = `Player Score: ${playerScore} | Computer Score: ${computerScore}`;
+    playerScoreBoard.textContent = `Player Score: ${playerScore}`;
+    computerScoreBoard.textContent = `Computer Score: ${computerScore}`;
 }
 
 function matchProtocol(data) {
@@ -162,6 +165,10 @@ buttonRock.addEventListener("click", function() {
     } else {
         var data = playRound("rock", getComputerChoice());
         matchProtocol(data);
+        if (playerScore === 5 || computerScore === 5) {
+            displayContent("");
+            gameOver();
+        } 
     }
 })
 
@@ -172,6 +179,10 @@ buttonPaper.addEventListener("click", function(){
     } else {
         var data = playRound("paper", getComputerChoice());
         matchProtocol(data);
+        if (playerScore === 5 || computerScore === 5) {
+            displayContent("");
+            gameOver();
+        } 
     }
 })
 
@@ -182,11 +193,10 @@ buttonScissors.addEventListener('click', function(){
     } else {
         var data = playRound("scissors", getComputerChoice());
         matchProtocol(data);
+        if (playerScore === 5 || computerScore === 5) {
+            displayContent("");
+            gameOver();
+        } 
     }
 })
-
-
-
-
-
 
